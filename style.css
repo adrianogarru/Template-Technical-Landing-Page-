@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+header{
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+}
+
+#infousingmobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #infousingmobile {
+        display: inline-block;
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+        background-color: white;
+    }
+}
+
+nav > header {   /* This is the main header on the left top of the navbar */
+    font-size: 22px;
+    font-weight: 400;
+    color: black;
+
+}
+
+nav {
+    position: fixed;
+    margin-left: 0px;
+    height: 800px;
+    width: 350px;
+    background-color: white;
+    max-height: calc(100% - 5px); /* With fixed position is needed to allow scroll bar work properly*/
+    overflow-y: auto; /* This is for the scroll bar */
+}
+
+ul {
+list-style-type: none;
+}
+nav > ul {
+    margin: 20px 0;
+    margin-left: 0px;
+    background-color: white;
+}
+
+nav > ul > li {
+    margin: 10px 0 0 -10px;
+    border-top: solid 1px;
+    text-decoration-style: none;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+.nav-link {
+    font-size: 18px;
+    margin: 16px 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#menumobile {
+    position: sticky;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    border: solid 1px;
+    overflow-x: hidden;
+}
+nav select {
+    display: none;
+}
+
+/* Media rule start for Nav bar */
+@media (max-width: 800px) {
+
+    html, body {
+        overflow-x: hidden; /* This is for hidden horizontal scroll bar*/
+      }
+
+    nav ul { 
+        display: none; /* This is for hidden the desktop menu */
+    }
+    nav {
+        display: inline-block;
+        padding-bottom: 10px;
+        background-color: whitesmoke;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+     }
+    nav select { 
+        display: inline-block;
+        position: sticky;
+        background-color: white;
+        width: fit-content;
+        text-align-last:center; /* align text inside select tag - not supported to all browswer */
+    }
+    .nav-link {
+        display: block;
+        height: 20px; /* This is the height of your header */
+        margin-top:-40px; /* This is again negative value of the height of your header */
+        visibility:hidden;
+      }
+  }
+
+/* Media rule END for Nav bar */
+
+#main-doc {
+    background-color: white;
+    font-size: 18px;
+    margin-left: 370px; /* Same as the width of the sidebar (plus 20px per style) */
+    padding: 0px 5px;
+}
+img {
+    max-width: 600px; 
+    display: flex;
+    padding: 12px;
+}
+section {
+   width: 90%;
+}
+p {
+    display: block;
+    padding: 10px;
+}
+
+/* Media rule start for main content*/
+@media (max-width: 800px) {
+main {
+    margin-top: 400px;
+}
+    #main-doc {
+         display: inline;
+         overflow-x: hidden;
+        
+    }
+    section {
+        padding-top: 30px;
+        margin-top: 150px;
+    } 
+    img {
+        width: 100%
+    }
+  }
+/* Media rule END for Nav bar */
+.command {
+    font-size: 18px;
+    font-weight: bold;    
+} 
+.codephp {
+    font-size: 18px;
+    color: black;
+}

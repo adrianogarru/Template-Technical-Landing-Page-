@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="author" content="Adriano Garruba">
+<meta name="description" content="Tchnical landing page, template mobile friendly - Educational Purpose">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAMP technical landing page</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <!-- Menu desktop-->
+    <nav id="navbar">
+        <header>LAMP in Google Gloud Plathform</header>
+        <!-- ID infousingmobile is a message that will appear only during mobile version <800px -->
+        <p id="infousingmobile">It's preferable to read via desktop devices</p>
+        <ul>
+            <li><a class="nav-link" href="#introduction">Introduction</a></li>
+            <li><a class="nav-link" href="#create_vm_istance">Create a VM Instance based on Linux Debian</a></li>
+            <li><a class="nav-link" href="#promete_ip_external">Promote IP Externally</a></li>
+            <li><a class="nav-link" href="#install_apache">Install Apache</a></li>
+            <li><a class="nav-link" href="#dns_configuration">DNS Configuration</a></li>
+            <li><a class="nav-link" href="#database_mabiadb">Install Database MariaBD</a></li>
+            <li><a class="nav-link" href="#settingUp_database">Setting up DBMaria for Wordpress</a></li>
+            <li><a class="nav-link" href="#wordpress">Install and configure Wordpress</a></li>
+            <li><a class="nav-link" href="#Settingmariatowordpress">Setting WordPress to comunicate with DBMaria</a></li>
+        </ul>
+        <!-- Menu mobile with JS querry onchanged-->
+        <select name="Menu" onchange="location = this.options[this.selectedIndex].value;" id="menumobile">
+            <option value="#introduction">Introduction</option>
+            <option value="#create_vm_istance">Create a VM Instance based on Linux Debian</option>
+            <option value="#promete_ip_external">Promote IP Externally</option>
+            <option value="#install_apache">Install Apache</option>
+            <option value="#dns_configuration">DNS Configuration</option>
+            <option value="#database_mabiadb">Install Database MariaBD</option>
+            <option value="#settingUp_database">Setting up DBMaria for Wordpress</option>
+            <option value="#wordpress">Install and configure Wordpress</option>
+            <option value="#Settingmariatowordpress">Setting WordPress to comunicate with DBMaria</option>
+        </select>
+    </nav>
+    <main id="main-doc">
+        <!-- Introduction article-->
+        <span class="nav-link" id="introduction"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="introduction">
+            <header class="title_topic">Introduction</header>
+            <article>
+                <p>
+                    Many people pay extra to get hosting tailored to run CMS like WordPress from their provider, in my
+                    case I want to create everything from scratch in order to have the maximum control on it.
+                    First of all Google Cloud is an amazing and simple platform that allows you to create and set-up a
+                    VM instance and run a different particular kind of server. In my case, I have chosen to run a LAMP
+                    web server because is based on Linux OS (Debian), Apache, MySQL and PHP and where a CMS WordPress
+                    platform will run. Google also provides a very define guideline really simple to follow if you have
+                    a basic understanding of technologies involved and Google gives to you an extensive trial period,
+                    Gmail is required link: https://cloud.google.com/
+                </p>
+            </article>
+        </section>
+        <!-- Istance article-->
+        <span class="nav-link" id="create_vm_istance"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="create_vm_istance">
+            <header class="title_topic">Create a VM Instance based on Linux Debian</header>
+            <article>
+                <p>
+                    On the left of your screen highlighted with red, you can find a way to set up your fist Instance
+                    <img src="img/Vm-1.png" alt="Create istance">
+                    You should set name of the instance, region, zone, machine type I’ve chosen the small one.
+                    <img src="img/Vm-2.png" alt="Create istance">
+                    Make sure to allow HTTP and HTTPS traffic.
+                    <img src="img/Vm-3.png" alt="Create istance">
+                    Now we can see that our instance has been created, we can test it and check if it works via SSH.
+                    To run the VM running for the first time with the command:
+                    sudo passwd root and set the root password.
+                    <img src="img/Vm-4.png" alt="Create istance">
+                </p>
+            </article>
+        </section>
+        <!-- Promote IP article-->
+        <span class="nav-link" id="promete_ip_external"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="promete_ip_external">
+            <header class="title_topic">Promote IP Externally</header>
+            <article>
+                <p>
+                    Now we have to promote our IP in order for it to be reached externally, as to print screen <b> View
+                        network details</b>
+                    <img src="img/promote1.png" alt="promote ip">
+                    In <b> VCP network</b> and under <b>External IP addresses</b> we can switch the <b>IP from Ephemeral
+                        to Static.</b>
+                    <img src="img/promote2.png" alt="promote ip">
+                    Now we can reserver the static IP, regarding the name is up to you, description is optional.
+                    <img src="img/promote3.png" alt="promote ip">
+                    As we can see below <b>Static</b>IP is set and used by our instance.
+                    <img src="img/promote4.png" alt="promote ip">
+                </p>
+            </article>
+        </section>
+        <!-- Apache article -->
+        <span class="nav-link" id="install_apache"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="install_apache">
+            <header class="title_topic">Install Apache</header>
+                <article>
+                    <p>
+                        To install Apache you can run the simple command below:
+                        <p class="command">sudo apt-get update && sudo apt-get install apache2 -y</p>
+                        <img src="img/apache1.png" alt="apache">
+                        While installing apache we have to enable the<b> mode rewrite </b>with the command:
+                        <p class="command">sudo a2enmod rewrite</p>
+                        <p class="command">sudo systemctl restart apache2</p>
+                        <img src="img/apache2.png" alt="apache a2enmod">
+                        we can check the apache status:
+                        <p class="command">sudo systemctl status apache2</p>
+                        <img src="img/apache3.png" alt="apache status">
+                        Now finally we can click on external link and check if it works:
+                        You should remove the letter ‘S’
+                        <img src="img/apache4.png" alt="apache test">
+                        It only works when we remove the ‘S’ because we have any certification SSL set.
+                        <img src="img/apache4.png" alt="apache test">
+                        Don’t panic if it does not work, insure that issue with firewall is set:
+                        For firewall I will link here at Google guideline
+                    </p>
+                </article>
+        </section>
+        <!-- DNS article -->
+        <span class="nav-link" id="dns_configuration"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="dns_configuration">
+            <header class="title_topic">DNS Configuration</header>
+            <article>
+                <p>
+                    I have already bought a domain in GoDaddy but you can buy where you want.
+                    We have to create a zone in <b>Network services</b> and go to <b>Cloud DNS</b>
+                    <img src="img/dns1.png" alt="DNS Google Cloud">
+                    In <b>Zone name </b> you can write a name of your choice (It should be unique),<b>DNS name</b>
+                    should match the name of
+                    your domain.
+                    <img src="img/dns2.png" alt="DNS Google Cloud name">
+                    Now we have to <b>Add record set</b>
+                    <img src="img/dns3.png" alt="DNS Google Cloud new record">
+                    Now it is very Important, to insert <b>external IP in IPv4</b> of our instance and click create.
+                    <img src="img/dns4.png" alt="DNS Google Cloud External IP">
+                    We have to do the same in<b>Add record set</b> and setting domain address with <b>www </b> like on
+                    print screen below,
+                    IPv4 it’s the
+                    same as previous one.
+                    <img src="img/dns5.png" alt="DNS Google Cloud Domain address">
+                    Here we go, the big picture how it should look like.
+                    <img src="img/dns6.png" alt="DNS look like">
+                    Now we can configure our <b> name server in GoDaddy </b>, on the left you can see name of the server
+                    provided by Google, on the
+                    right side we have to add it on the platform located in GoDaddy.
+                    <img src="img/dns7.png" alt="DNS Google Cloud Domain address">
+                    Sometime this configuration can take quite a bit of time before it’s ready, but we can check it with
+                    the website
+                    <a href="https://dnschecker.org">dnschecker.org</a> to understand how is the status of spreading our
+                    DNS around the world.
+                    <img src="img/dns8.png" alt="DNS works">
+                </p>
+            </article>
+        </section>
+        <!--Database mariaDB article -->
+        <span class="nav-link" id="database_mabiadb"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="database_mabiadb">
+            <header class="title_topic">Install Database MariaBD</header>
+            <article>
+                <p>
+                    Run command: <p class="command"> sudo apt-get install mariadb-server mariadb-client</p>
+                    After that we have to configure the Database with:
+                    <p class="command">sudo mysql_secure_installation</p>
+                    <img src="img/maria1.png" alt="MariaDB">
+                    After that we can restart: <p class="command">sudo systemctl restart mysql.service</p>
+                    Install PHP sudo <p class="command">apt-get install apache2 php libapache2-mod-php</p>
+                    Now you need install PHP extension for mysql:
+                    <p class="command">apt-get install php7.0-mysql</p>
+                    Perform the follow restart:
+                    <p class="command">sudo service mysql restart</p>
+                    <p class="command">sudo service apache2 restart</p>
+                    Now to check if PHP is installed correctly we can proceed in this way:
+                    We have to create a PHP file for testing if it is working.
+                    File name info.php, created in the directory </b> var/www/html </b>
+                    command:<p class="command">nano info.php</p>
+                    Insert code:
+                    <p id="codephp"><span>< ?php
+                    phpinfo();
+                    ?><span></p>
+                    <img src="img/maria1.png" alt="MariaPhpInfo">
+                    If you want to learn how to navigate in nano environment please link: <a
+                        href="https://wiki.gentoo.org/wiki/Nano/Basics_Guide">Basic guide nano</a>
+                    Now after our link we have to write info.php <b>[domain]/info.php</b> and result should be as shown
+                    on the page below.
+                    <img src="img/mariaphp.png" alt="MariaPhpInfo">
+                </p>
+            </article>
+        </section>
+        <!--Setting Database article -->
+        <span class="nav-link" id="settingUp_database"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="settingUp_database">
+            <header class="title_topic">Setting up DBMaria for Wordpress</header>
+            <article>
+                <p>
+                    In order to allow WordPress to work we have to create a database.
+                    First of all we have to login with root administration with the command su
+                    Access to database with root administrator: <p class="command">mysql -u root -p</p>
+                    Now we need to create the database command:
+                    <p class="command">create database wordpress;</p>
+                    Database needs to have an user command:
+                    <p class="command">create user ‘usernameyouwant’@’localhost’ identified by ‘passwordYouWant’;</p>
+                    User created has to be granted to ALL access, command:
+                    <p class="command">Grant all privileges on*.* to ‘username‘@’localhost’ identified by ‘password‘;
+                    </p>
+                    Below is the summary:
+                    <img src="img/databasewordpress1.png" alt="database for wordpress">
+                    We have to refresh the table of privileges just to align it with: <p class="command">flush
+                        privileges;</p>
+                    if you want check if database really exists just run: <p class="command">show databases;</p>
+                    if you want to check user is created run:<p class="command"> select user from mysql.user group by
+                        user;</p>
+                    Now we can exit from MariaDB with the simple command: exit;
+                    Now we have to proceed with some restart and enable MySQL
+                    <p class="command">sudo systemctl stop mysql.service</p>
+                    <p class="command">sudo systemctl start mysql.service</p>
+                    <p class="command">sudo systemctl enable mysql.service</p>(If show error message goes ahead,
+                    probably is already enabled)
+                    <p class="command">sudo systemctl status mysql.service</p> (Check if status of service is active)
+                </p>
+            </article>
+        </section>
+        <!--Wordpress article -->
+        <span class="nav-link" id="wordpress"></span> <!-- Mobile - avoid overlap of nav during href-->
+        <section id="wordpress">
+            <header class="title_topic">Wordpress</header>
+                <article>
+                    <p>
+                        Download and unzip wordpress package:
+                        <p class="command">cd /tmp && wget https://wordpress.org/latest.tar.gz</p>
+                        <p class="command">tar -zxvf latest.tar.gz</p>
+                        then we have to move in the proper folder where Apache root document is located.
+                        <p class="command">sudo mv wordpress /var/www/html/wordpress</p>
+                        after that I want to move all the file in wordpress folder in html
+                        <img src="img/wordpress1.png" alt="wordpress folder">
+                        <p class="command">mv /var/www/html/wordpress/* /var/www/html</p>
+                        <img src="img/wordpress2.png" alt="wordpress folder">
+                        <img src="img/wordpress3.png" alt="wordpress folder">
+                        now we have to change the group owner to allow WordPress to work properly.
+                        <p class="command">sudo chown -R www-data:www-data /var/www/html</p>
+                        <p class="command">sudo chmod -R 755 /var/www/html</p>
+                        <img src="img/wordpress4.png" alt="wordpress privileges">
+                        we can remove folder WordPress as it is empty with command run on root:<p class="command">rm -r
+                            mydir</p>
+                    </p>
+                </article>
+        </section>
+    <!--Configure database for Wordpress article -->
+    <span class="nav-link" id="Settingmariatowordpress"></span> <!-- Mobile - avoid overlap of nav during href-->
+    <section id="Settingmariatowordpress">
+        <header class="title_topic">Setting WordPress to comunicate with DBMaria</header>
+        <article>
+            <p>
+                Edit file:<p class="command">sudo nano /var/www/html/wp-config-sample.php</p>
+                in order to give the same privilege we have to run again this command:
+                <p class="command">sudo chown -R www-data:www-data /var/www/html</p>
+                <p class="command">sudo chmod -R 755 /var/www/html</p>
+                <img src="img/mariaandwordpress1.png" alt="wordpress and db">
+                IMPORTANT: save file like:<b>wp-config.php</b>
+                For this file also we have to add the same group of previous file:
+                we can run the commands again:
+                <p class="command">sudo chown -R www-data:www-data /var/www/html</p>
+                <p class="command">sudo chmod -R 755 /var/www/html</p>
+                Now we can check if our page WordPress is working with: [Domain or external link]/wp-admin in our
+                browser.
+                Here we go, we can proceed with WordPress installation:
+                <img src="img/wordpressfinal.png" alt="wordpress first installation">
+                If you followed this guideline after WordPress configuration it will not work properly, because the
+                Apache will load by default a primary file index.html still, we can just remove it with root access:
+                <p class="command">rm -index.html</p> and after that an<p class="command">sudo serivce apache2 restart
+                </p>
+                As per this guideline I never mention the configuration of Apache server but you should be aware of the
+                following:
+                in: <b>cd /etc/apache2/sites-enabled/</b>there is a configuration file related to the root which
+                contains the file of our website.
+                file name is called <b>000-default.conf</b>
+                In my case I will not change the <b>DocumentRoot</b> because is the right one.
+                <img src="img/wordpressapache.png" alt="wordpress apache">
+            </p>
+        </article>
+    </section>
+    </main>
+    </body>
+    </html>
